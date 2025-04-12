@@ -1,7 +1,7 @@
 
-# TAS1 - Estructura 
+# TAS2 - Contenedores servidor web 
 ## 1. Titulo
-Comandos de Linux: Manipulación de Archivos y Directorios desde la Terminal
+Despliegue y Personalizacion de Servidores Web con Nginx en Contenedores Docker
 ## 2. Tiempo de duración
 El tiempo fue de 120 minutos. 
 ## 3. Fundamentos:
@@ -39,43 +39,42 @@ Los comandos de Linux permite controlar el sistema desde la interfaz de linea de
 ## 4. Conocimientos previos.
    
 Para realizar esta practica el estudiante necesita tener claro los siguientes temas:
-- Comandos básicos de Linux.
-- Navegación entre directorios desde la terminal. 
-- Uso de editores de texto como nano o vim.
-- Gestión de archivos(crear, copiar, mover, eliminar). 
+- Comandos básicos de Docker.
+- Edicion de archivos HTML con nano o vi.
+- Conocimientos sobre servidores web y puertos.
 
 ## 5. Objetivos a alcanzar
-   
-- Crear una estructura de directorios utilizando comandos de terminal.
-- Manipular archivos de texto dentro de directorios específicos.
-- Redirigir y concatenar contenido entre archivos.
-- Eliminar archivos y carpetas desde la terminal.
-- Registrar comandos utilizados mediante **history**.
+
+- Desplegar dos servidores Nginx en contenedores distintos con Docker.
+- Editar y personalizar el contenido HTML por cada contenedor.
+- Comprender cómo se gestionan archivos dentro de contenedores Docker.
+- Verificar visualmente el contenido de cada servidor desde el navegador.
   
 ## 6. Equipo necesario:
   
-- Computador con sistema operativo Linux/WSL/GitBash.
-- Terminal funcional con acceso a comandos Bash.
-- Editor de texto en terminal(nano, vim).
-- Conexión a internet para búsqueda de documentación. 
+- Computador.
+- Docker funcionando.
+- Editor de texto como nano o vi.
+- Navegador web.
+
 ## 7. Material de apoyo.
    
-- Documentación de Linux.
+- Documentación de Docker
 - Guía de asignatura.
-- Linux Command Cheat Sheet. 
-- Videos tutoriales de comandos en terminal.
+- Cheat Sheet de comandos Docker. 
+- Videos tutoriales de Docker.
 ## 8. Procedimiento
 
 ### Pasos 
 
 **Crear una estructura de carpetas:**
 
-1. En tu directorio de trabajo, crea una carpeta llamada proyecto_comandos.
+1. Crea el primer contenedor Nginx llamado nginx1 exponiendo el puerto 8089: docker run -d --name nginx1 -p 8089:80 nginx
 
-Figura 8-1 Creación de carpeta.
+Figura 8-1 Creación de contenedor nginx1
 
 
-<img src="./practica1/1.PNG" alt="drawing0" width="500"/>
+<img src="./docker-img/1.PNG" alt="drawing0" width="500"/>
 
 
 2. Dentro de proyecto_comandos, crea tres subcarpetas: documentos, imágenes y scripts.
