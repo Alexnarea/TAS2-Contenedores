@@ -15,14 +15,14 @@ Un contenedor de Docker es un entorno de ejecución que tiene todos los componen
 - Ligero: los contenedores comparten el núcleo del sistema operativo de la máquina y, por lo tanto, no requieren un sistema operativo por aplicación, lo que impulsa una mayor eficiencia del servidor y reduce los costos de servidor y licencias.
 - Seguro: las aplicaciones son más seguras en contenedores y Docker proporciona las capacidades de aislamiento predeterminadas más sólidas de la industria.
 
-<img src="./docker-img/contenedor.PNG" alt="drawing0" width="500"/>
+<img src="./docker-img/contenedor.png" alt="drawing0" width="500"/>
 
 ## Imagen Docker 
 
 Una imagen de Docker, o una imagen de contenedor, es un archivo ejecutable e independiente que se utiliza para crear un contenedor. Esta imagen de contenedor contiene las bibliotecas, las dependencias y los archivos que el contenedor necesita para ejecutarse. Una imagen de Docker se puede compartir y transportar; por lo tanto, se puede implementar la misma imagen en varias ubicaciones a la vez, como un archivo binario de software.Puede almacenar imágenes en registros para realizar un seguimiento de arquitecturas de software complejas, proyectos, segmentos de negocio y accesos a grupos de usuarios. Por ejemplo, el registro público Docker Hub contiene imágenes como sistemas operativos, marcos de lenguajes de programación, bases de datos y editores de código(Imagen de Docker y Contenedor: Diferencia Entre Tecnologías de Implementación de Aplicaciones - AWS, n.d.). 
 
 
-<img src="./docker-img/imagen.PNG" alt="drawing0" width="500"/>
+<img src="./docker-img/imagen.png" alt="drawing0" width="500"/>
 
 ## 4. Conocimientos previos.
    
