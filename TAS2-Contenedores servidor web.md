@@ -6,35 +6,23 @@ Despliegue y Personalizacion de Servidores Web con Nginx en Contenedores Docker
 El tiempo fue de 120 minutos. 
 ## 3. Fundamentos:
 
-## WSL
+## Contenedor Docker 
 
-Subsistema de Windows para Linux (WSL) es una característica de Windows que permite ejecutar un entorno Linux en la máquina Windows, sin necesidad de una máquina virtual independiente o arranque dual. WSL está diseñado para proporcionar una experiencia perfecta y productiva para los desarrolladores que quieren usar Windows y Linux al mismo tiempo (_¿Qué Es El Subsistema de Windows Para Linux? | Microsoft Learn_, n.d.).
+Un contenedor de Docker es un entorno de ejecución que tiene todos los componentes necesarios (como el código, las dependencias y las bibliotecas) para ejecutar el código de la aplicación sin utilizar las dependencias de la máquina host. Este tiempo de ejecución del contenedor se ejecuta en el motor de un servidor, una máquina o una instancia en la nube. El motor ejecuta varios contenedores en función de los recursos subyacentes disponibles(Imagen de Docker y Contenedor: Diferencia Entre Tecnologías de Implementación de Aplicaciones - AWS, n.d.). 
 
-- Use WSL para instalar y ejecutar varias distribuciones de Linux, como Ubuntu, Debian, Kali.
-- Almacene archivos en un sistema de archivos Linux aislado, específico de la distribución instalada.
-- Ejecute herramientas de línea de comandos, como BASH.
-- Ejecute herramientas comunes de línea de comandos de BASH, como `grep`, `sed`, `awk`u otros archivos binarios ELF-64.
-- Ejecute scripts de Bash y aplicaciones de línea de comandos GNU/Linux, entre las que se incluyen:
-    - Herramientas: vim, emacs, tmux
-    - Lenguajes: NodeJs, JavaScript, Python, Ruby, C/C++, C# & F#, Rust, Go, etc.
-    - Servicios: SSHD, MySQL, Apache, lighttpd, MongoDB, PostgreSQL.
-- Instale software adicional con su propio administrador de paquetes de distribución GNU/Linux.
-- Invoque aplicaciones de Windows mediante un Shell de línea de comandos similar a Unix.
-- Invoque aplicaciones GNU/Linux en Windows.
 
-## Comandos de Linux
+- Estándar: Docker creó el estándar de la industria para contenedores, para que pudieran ser portátiles en cualquier lugar
+- Ligero: los contenedores comparten el núcleo del sistema operativo de la máquina y, por lo tanto, no requieren un sistema operativo por aplicación, lo que impulsa una mayor eficiencia del servidor y reduce los costos de servidor y licencias.
+- Seguro: las aplicaciones son más seguras en contenedores y Docker proporciona las capacidades de aislamiento predeterminadas más sólidas de la industria.
 
-Los comandos de Linux permite controlar el sistema desde la interfaz de linea de comandos (CLI). Son instrucciones de texto introducidas en el terminal para indicarle a tu sistema exactamente que hacer. Los comandos que se ingresan en el terminal distinguen entre mayúsculas y minúsculas y siguen una sintaxis como "comando-opciones argumentos" (_Top 100 Comandos Linux (Que Debes Conocer) - DreamHost_, n.d.).
+<img src="./docker-img/contenedor.PNG" alt="drawing0" width="500"/>
 
-- **Son sensibles a mayúsculas y minúsculas**; por ejemplo, “ls” y “LS” significan cosas diferentes.
-- **Siguen una sintaxis específica** como “comando -opciones argumentos“.
-- **Se pueden combinar** para realizar operaciones complejas mediante pipelines y redirecciones.
-- **Proporcionan un control detallado** sobre tu sistema, algo difícil de lograr con interfaces gráficas.
-- **Permiten automatizar tareas** mediante scripts de Shell y procesamiento por lotes.
-- **Se pueden utilizar para acceder a recursos del sistema** como el sistema de archivos, red, memoria y CPU.
-- **Forman la base de la interacción** con servidores y sistemas operativos Linux.
+## Imagen Docker 
 
-<img src="./practica1/imagenLinux.png" alt="drawing0" width="500"/>
+Una imagen de Docker, o una imagen de contenedor, es un archivo ejecutable e independiente que se utiliza para crear un contenedor. Esta imagen de contenedor contiene las bibliotecas, las dependencias y los archivos que el contenedor necesita para ejecutarse. Una imagen de Docker se puede compartir y transportar; por lo tanto, se puede implementar la misma imagen en varias ubicaciones a la vez, como un archivo binario de software.Puede almacenar imágenes en registros para realizar un seguimiento de arquitecturas de software complejas, proyectos, segmentos de negocio y accesos a grupos de usuarios. Por ejemplo, el registro público Docker Hub contiene imágenes como sistemas operativos, marcos de lenguajes de programación, bases de datos y editores de código(Imagen de Docker y Contenedor: Diferencia Entre Tecnologías de Implementación de Aplicaciones - AWS, n.d.). 
+
+
+<img src="./docker-img/imagen.PNG" alt="drawing0" width="500"/>
 
 ## 4. Conocimientos previos.
    
@@ -69,108 +57,82 @@ Para realizar esta practica el estudiante necesita tener claro los siguientes te
 
 **Crear una estructura de carpetas:**
 
-1. Crea el primer contenedor Nginx llamado nginx1 exponiendo el puerto 8089: docker run -d --name nginx1 -p 8089:80 nginx
+1. Crea el primer contenedor Nginx llamado nginx1 exponiendo el puerto 8089: docker run -d --name nginx1 -p 8089:80 nginx.
 
-Figura 8-1 Creación de contenedor nginx1
+Figura 8-1 Creación de contenedor nginx1.
 
 
 <img src="./docker-img/1.PNG" alt="drawing0" width="500"/>
 
 
-2. Dentro de proyecto_comandos, crea tres subcarpetas: documentos, imágenes y scripts.
+2. Copia el archivo index.html desde el contenedor nginx1 al sistema anfitrión: docker cp nginx1:/usr/share/nginx/html/index.html ./index1.html.
 
-Figura 8-2 Estructura inicial de carpetas creada con mkdir.
-
-
-<img src="./practica1/2.PNG" alt="drawing0" width="500"/>
-
-**Manipulación de archivos:**
-
-3. Dentro de la carpeta documentos, crea un archivo de texto llamado notas.txt.
-
-Figura 8-3 Creacion del archivo notas.txt usando touch.
+Figura 8-2 Copia del archivo index.html.
 
 
-<img src="./practica1/3.PNG" alt="drawing0" width="500"/>
+<img src="./docker-img/3.PNG" alt="drawing0" width="500"/>
+
+3. Edita el archivo index1.html con un editor como nano o vi, incluyendo información del instituto.
+
+Figura 8-3 Edicion del archivo con informacion del instituto.
 
 
-4. Agrega al menos tres líneas de texto en notas.txt utilizando un editor de texto en la terminal (nano, vim) o con redireccionamiento (echo).
-
-Figura 8-4 Agregación de contenido mediante redireccionamiento.
+<img src="./docker-img/instituto.PNG" alt="drawing0" width="500"/>
 
 
-<img src="./practica1/4.PNG" alt="drawing0" width="500"/>
+4. Copia el archivo editado nuevamente al contenedor nginx1: docker cp index1.html nginx1:/usr/share/nginx/html/index.html.
 
-5. Copia el archivo notas.txt a la carpeta scripts y cambia su nombre a backup_notas.txt.
-
-Figura 8-5 Copia de archivos y cambio de nombre.
+Figura 8-4 Copia del archivo editado al contenedor. 
 
 
-<img src="./practica1/5.PNG" alt="drawing0" width="500"/>
+<img src="./docker-img/4.PNG" alt="drawing0" width="500"/>
 
-6. Mueve el archivo backup_notas.txt a la carpeta imágenes.
+5. Crea el segundo contenedor Nginx llamado nginx2 exponiendo el puerto 8090: docker run -d --name nginx2 -p 8090:80 nginx.
 
-Figura 8-6 Movimiento de archivos
-
-
-<img src="./practica1/6.PNG" alt="drawing0" width="500"/>
-
-**Redirección y concatenación:**
-
-7. Crea un archivo llamado resumen.txt en documentos.
-
-Figura 8-7 Creacion de archivo. 
+Figura 8-5 Creacion del segundo contenedor nginx2.
 
 
-<img src="./practica1/7.PNG" alt="drawing0" width="500"/>
+<img src="./docker-img/p1.PNG" alt="drawing0" width="500"/>
 
-8. Redirecciona el contenido de notas.txt a resumen.txt.
-9. Añade una nueva línea de texto a resumen.txt sin sobrescribir su contenido.
+6. Copia el archivo index.html desde el contenedor nginx2 al sistema anfitrión: docker cp nginx2:/usr/share/nginx/html/index.html ./index2.html.
 
-Figura 8-8 Redirección de contenido y adición de una nueva linea.
-
-
-<img src="./practica1/8.PNG" alt="drawing0" width="500"/>
-
-**Eliminación de archivos y carpetas:**
-
-10. Elimina el archivo backup_notas.txt de la carpeta imágenes.
-11. Elimina la carpeta imágenes (solo si está vacía).
-
-Figura 8-9 Eliminación de archivo y carpeta.
+Figura 8-6 Copia del segundo archivo index.
 
 
-<img src="./practica1/9.PNG" alt="drawing0" width="500"/>
+<img src="./docker-img/p2.PNG" alt="drawing0" width="500"/>
 
-**Entrega**:
+7. Edita el archivo index1.html con un editor como nano o vi, incluyendo información del instituto.
 
-12. Vuelca el contenido del comando history a un archivo llamado tarea-s1-nombre_apellido.txt utilizando tuberías.
-
-Figura 8-10 Lista de comandos con history.
+Figura 8-7 Edicion del archivo con informacion del estudiante.
 
 
-<img src="./practica1/10.PNG" alt="drawing0" width="500"/>
+<img src="./docker-img/personal.PNG" alt="drawing0" width="500"/>
 
-12. Sustituye "nombre_apellido" por tu nombre y apellido correspondiente.
+8. Copia el archivo editado nuevamente al contenedor nginx1: docker cp index1.html nginx1:/usr/share/nginx/html/index.html.
 
-Figura 8-11 Sustitución de nombre de archivo.
+Figura 8-8 Copia del segundo archivo editado al contenedor.
 
 
-<img src="./practica1/11.PNG" alt="drawing0" width="500"/>
+<img src="./docker-img/p3.PNG" alt="drawing0" width="500"/>
+
 
 ## 9. Resultados esperados:
     
-Al finalizar la práctica, se logró cumplir exitosamente cada uno de los objetivos planteados en el procedimiento. La estructura de carpetas fue creada correctamente utilizando comandos de Linux como `mkdir`, `cd` y `ls`, lo cual permitió organizar adecuadamente los archivos dentro del proyecto.
+Al finalizar la práctica, se logró cumplir exitosamente cada uno de los objetivos planteados en el procedimiento. En primer lugar, se realizó el despliegue correcto de los contenedores Docker ejecutando el servidor web Nginx, utilizando la imagen oficial disponible en Docker Hub. Cada contenedor fue vinculado a un puerto diferente (8089 y 8090), permitiendo el acceso independiente desde el navegador.
 
-Dentro de la carpeta `documentos`, se generó el archivo `notas.txt` con tres líneas de contenido, el cual fue creado utilizando el comando `echo` y verificado con `cat`, luego este archivo fue copiado y renombrado como `backup_notas.txt` en la carpeta `scripts` utilizando el comando `cp`, y luego movido a la carpeta `imagenes` con `mv`.
+Cada servidor web mostró una página HTML distinta, cumpliendo con la guía. El primer contenedor desplegó una página con información institucional, mientras que el segundo mostró una página personalizada con datos del estudiante. Para lograr esto, se utilizaron comandos como docker ``cp`` para transferir los archivos HTML al interior de los contenedores.
 
-Se trabajó con redirección de contenido mediante el uso de `>` para crear el archivo `resumen.txt` y `>>` para añadir una nueva línea sin sobrescribir la información existente. Se eliminaron correctamente archivos y carpetas mediante `rm` y `rmdir`. Finalmente, el historial de comandos ejecutados durante toda la práctica fue volcado en un archivo `tarea-s1-nombre_apellido.txt` utilizando una tubería con `history` y `>`.
+Durante el proceso se emplearon de manera adecuada los comandos ``docker run``, ``docker cp``, ``docker stop``, ``docker start``. Además, se aplicó correctamente el mapeo de puertos con la opción ``-p``, y se trabajó en modo desatendido con ``-d`` para mantener los servicios corriendo en segundo plano.
 
-Cada paso fue documentado con capturas de pantalla para evidencia  del uso correcto de los comandos y la progresión del trabajo. Estos resultados reflejan la comprensión del manejo de la terminal y de operaciones básicas en entornos basados en Linux.
+Todo el desarrollo de la práctica fue documentado con capturas de pantalla que evidencian el funcionamiento de los servidores web, el uso correcto de los comandos Docker y la visualización del contenido personalizado desde el navegador. Esto demuestra una comprensión sólida de los conceptos de virtualización, contenedores y servicios web, alcanzando satisfactoriamente los objetivos de aprendizaje propuestos.
 
-<img src="./practica1/12.PNG" alt="drawing0" width="500"/>
+<img src="./docker-img/alex.PNG" alt="drawing0" width="500"/>
+
+<img src="./docker-img/inst.PNG" alt="drawing0" width="500"/>
+
 
 ## 10. Bibliografía
     
-- _¿Qué es el Subsistema de Windows para Linux?_ _| Microsoft Learn_. (n.d.). Retrieved April 4, 2025, from https://learn.microsoft.com/es-es/windows/wsl/about
-- _Top 100 Comandos Linux (Que Debes Conocer) - DreamHost_. (n.d.). Retrieved April 4, 2025, from https://www.dreamhost.com/blog/es/comandos-linux-que-debes-conocer/
+- Imagen de Docker y contenedor: diferencia entre tecnologías de implementación de aplicaciones - AWS. (n.d.). Retrieved April 10, 2025, from https://aws.amazon.com/es/compare/the-difference-between-docker-images-and-containers/
+- ¿Qué es un contenedor? | Docker. (n.d.). Retrieved April 10, 2025, from https://www.docker.com/resources/what-container/
+
